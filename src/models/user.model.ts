@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encypt } from "../utils/encryption";
 
 
 
@@ -64,7 +65,15 @@ const UserSchema = new Schema<User>({
 
 );
 
+
+UserSchema.pre("save", function (next) {
+    const user = this;
+    user.password = encypt(user.password);
+    next();
+})
+
+
 const UserModel = mongoose.model("User", UserSchema);//User itu tabel nya dari UserSchema
 
 
-export default UserModel;
+export default UserModel;  

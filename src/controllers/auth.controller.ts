@@ -11,6 +11,8 @@ type TRegister = {
   confirmPassword: string;
 };
 
+
+
 const registerValidateSchema = Yup.object({
   fullName: Yup.string().required(),
   userName: Yup.string().required(),
@@ -55,4 +57,6 @@ export default {
       });
     }
   },
+
+
 };
